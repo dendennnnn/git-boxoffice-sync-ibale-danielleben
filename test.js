@@ -16,7 +16,13 @@ assertEqual(tickets.isValidQuantity(0), false, 'a zero quantity is invalid');
 assertEqual(tickets.isValidQuantity(25), false, 'an order over 20 tickets is invalid');
 
 const price = tickets.calculateTicketPrice(3, 15.5);
-assertEqual(price, 46, 'price for 3 tickets at $15.50 each');
+assertEqual(price, 47, 'price for 3 tickets at $15.50 each');
+
+const groupPrice = tickets.calculateTicketPrice(5, 20);
+assertEqual(groupPrice, 90, '10% group discount for 5 tickets');
+
+const roundedPrice = tickets.calculateTicketPrice(3, 15.6);
+assertEqual(roundedPrice, 47, 'price rounds to nearest whole number');
 
 const vipPrice = tickets.calculateTicketPrice(2, 20, true);
 assertEqual(vipPrice, 60, '50% VIP surcharge for premium seating');
